@@ -126,7 +126,7 @@
 				margin:10px 0px;
 				text-align:center;
 			}
-			a{ cursor:pointer; }
+			a{ cursor:pointer;color:#333;}
 			input{ margin:0px;padding:0px 5px;font-family:"Open Sans", "Courier"; }
 			form{ margin:0px;}
 
@@ -162,7 +162,7 @@
 
 			#add-input-new{ width:110px; }
 			#add-input-cat{ width:180px; }
-			#add-input-content{ min-width: 400px; }
+			#add-input-content{ width: 500px; }
 			
 			#btn-new{
 				font-size:1.5em;
@@ -200,23 +200,18 @@
 			}
 
 			.list_content{
-				min-width: 450px;
+				width: 50%;
 				font-size:0.9em;
-			}
-
-			.list_gt{
-				float:left;
 			}
 
 			.list_info{
 				text-align:left;
-				min-width:100px;
-				font-size:0.8em;
+				font-size:0.6em;
 			}
 
 			.list_admin{
 				width:200px;
-				font-size:.8em;
+				font-size:.6em;
 			}
 
 			.todo{ color:#F00; }
@@ -486,14 +481,14 @@
 				echo '<div class="list_content">'.xml_escapeOut("".$elmt->content).'</div>';
 				
 				echo "<div class=\"list_info\" >".getTheDate($elmt->added)." ".getTime($elmt->added)."</div>";
-				echo "<div class=\"list_admin\" >";
+				echo '<div class="list_admin" >';
 					
-					if($elmt["state"] != 2)	echo "<a href=\"?action=com&list=".$listName."&id=".$elmt["id"]."&state=2\">done</a> - ";
-					if($elmt["state"] != 0) echo "<a href=\"?action=com&list=".$listName."&id=".$elmt["id"]."&state=0\">todo</a> - ";
-					if($elmt["state"] != 1)	echo "<a href=\"?action=com&list=".$listName."&id=".$elmt["id"]."&state=1\">wait</a> - ";
-					if($elmt["state"] != 3)	echo "<a href=\"?action=com&list=".$listName."&id=".$elmt["id"]."&state=3\">depr</a> - ";
-					
-					echo "<a href=\"index.php?action=rem&list=".$listName."&id=".$elmt["id"]."\">del</a>";
+					if($elmt['state'] != 2)	echo '<a href="?action=com&list='.$listName.'&id='.$elmt['id'].'&state=2">DONE</a> | ';
+					if($elmt['state'] != 0) echo '<a href="?action=com&list='.$listName.'&id='.$elmt['id'].'&state=0">TODO</a> | ';
+					if($elmt['state'] != 1)	echo '<a href="?action=com&list='.$listName.'&id='.$elmt['id'].'&state=1">WAIT</a> | ';
+					if($elmt['state'] != 3)	echo '<a href="?action=com&list='.$listName.'&id='.$elmt['id'].'&state=3">DEPR</a> | ';
+					echo '<a href="index.php?action=rem&list='.$listName.'&id='.$elmt["id"].'">DEL</a>';
+
 				echo "</div>";
 				
 				echo "<div class=\"clear\"></div>";
